@@ -17,8 +17,17 @@
 ## Deploy
 ```bash
 terraform init
+terraform plan \
+  -var="region=us-east-1" \
+  -var="instance_alias=YOUR-GLOBAL-UNIQUE-ALIAS" \
+  -var="instance_name=MyConnectInstance" \
+  -var="contact_flow_name=GI_Inbound_Main_test"
 terraform apply \
   -var="region=<your-region>" \
   -var="instance_alias=<globally-unique-alias>" \
   -var="instance_name=<display-name>" \
   -var="contact_flow_name=<flow-name-in-console>"
+```
+## example code 
+```bash
+terraform plan -var="region=us-east-1" -var="instance_alias=gi_ucsf" -var="instance_name=GIucsfConnect"  -var="contact_flow_name=GI_Inbound_Main_ucsf"
