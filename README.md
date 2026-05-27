@@ -17,6 +17,11 @@
 ## Deploy
 ```bash
 terraform init
+terraform plan \
+  -var="region=us-east-1" \
+  -var="instance_alias=YOUR-GLOBAL-UNIQUE-ALIAS" \
+  -var="instance_name=MyConnectInstance" \
+  -var="contact_flow_name=GI_Inbound_Main_test"
 terraform apply \
   -var="region=<your-region>" \
   -var="instance_alias=<globally-unique-alias>" \
