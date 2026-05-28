@@ -14,6 +14,8 @@ terraform-connect-deploy/
 ├── .gitignore
 └── flows/
     └── contact_flow.json ← Extract your exported flow JSON here
+└── lex/
+    └── GIHealthcareBot_ucsf.zip ← Extract your exported lex bot zip here
 ```
 
 | File / Directory | Purpose | Key Contents | Why It Enables Safe Handover |
@@ -24,7 +26,7 @@ terraform-connect-deploy/
 | `.gitignore` | **Version control exclusion rules** to keep the repository clean and secure. | Ignores `.terraform/`, `*.tfstate*`, `.terraform.lock.hcl`, OS/IDE files | Prevents state file conflicts, avoids exposing local cache or credentials, and ensures every user starts with a fresh, consistent Terraform workspace. |
 | `flows/contact_flow.json` | **Source of truth for the contact flow routing logic**. | Raw JSON exported from an existing Amazon Connect instance | Contains the actual call routing, prompts, and branching logic. Terraform reads it as a static data source and injects it into the new instance without modification. |
 
-## 🤖 Lex Bot Setup (One-Time Manual Step)
+## Lex Bot Setup (One-Time Manual Step)
 
 This Terraform configuration manages the Amazon Connect instance and contact flow. The Lex V2 bot must be created manually:
 
