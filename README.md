@@ -6,6 +6,7 @@
 
 ## 📁 Project Structure & File Descriptions
 
+```bash
 terraform-connect-deploy/
 ├── main.tf
 ├── variables.tf
@@ -13,7 +14,7 @@ terraform-connect-deploy/
 ├── .gitignore
 └── flows/
     └── contact_flow.json ← Extract your exported flow JSON here
-
+```
 
 | File / Directory | Purpose | Key Contents | Why It Enables Safe Handover |
 |------------------|---------|--------------|------------------------------|
@@ -44,8 +45,3 @@ terraform plan -var="region=us-east-1" -var="instance_alias=giucsf" -var="instan
 terraform apply -var="region=us-east-1" -var="instance_alias=giucsf" -var="instance_name=GIucsfConnect" -var="contact_flow_name=GI_Inbound_Main_ucsf"
 
 ```
-
-=======
-terraform plan -var="region=us-east-1" -var="instance_alias=gi_ucsf" -var="instance_name=GIucsfConnect"  -var="contact_flow_name=GI_Inbound_Main_ucsf"
-```
->>>>>>> 7bce0a97ac8fc7b989c910626d9a4bdd778dea00
