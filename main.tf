@@ -16,14 +16,11 @@ data "local_file" "flow_json" {
   filename = "${path.module}/flows/GI_Inbound_Main_ucsf.json"
 }
 resource "aws_connect_instance" "this" {
-  identity_management_mode = "CONNECT_MANAGED"  # Built-in Connect user management
+  # Required arguments
+  identity_management_type = "CONNECT_MANAGED"  # Correct argument name (was "mode")
+  instance_alias           = var.instance_alias  #  Must be globally unique  # Optional but recommended
   inbound_calls_enabled    = true
   outbound_calls_enabled   = true
-  instance_alias           = var.instance_alias
-  name                     = var.instance_name
-
-  # Optional: Enable auto-best-practices validation on save
-  auto_resolve_best_practices_enabled = true
 }
 resource "aws_connect_contact_flow" "main_flow" {
   instance_id  = aws_connect_instance.this.id

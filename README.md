@@ -6,6 +6,15 @@
 
 ## 📁 Project Structure & File Descriptions
 
+terraform-connect-deploy/
+├── main.tf
+├── variables.tf
+├── outputs.tf
+├── .gitignore
+└── flows/
+    └── contact_flow.json ← Extract your exported flow JSON here
+
+
 | File / Directory | Purpose | Key Contents | Why It Enables Safe Handover |
 |------------------|---------|--------------|------------------------------|
 | `main.tf` | **Core Terraform configuration** that defines the AWS provider, reads local files, and declares the infrastructure to create. | - AWS provider block<br>- `data "local_file"` to read the contact flow JSON<br>- `aws_connect_instance` resource<br>- `aws_connect_contact_flow` resource | Acts as the deployment blueprint. All resource dependencies are explicitly defined, so Terraform creates them in the correct order automatically. |
@@ -30,4 +39,9 @@ terraform apply \
 ```
 ## example code 
 ```bash
-terraform plan -var="region=us-east-1" -var="instance_alias=gi_ucsf" -var="instance_name=GIucsfConnect"  -var="contact_flow_name=GI_Inbound_Main_ucsf"
+terraform plan -var="region=us-east-1" -var="instance_alias=giucsf" -var="instance_name=GIucsfConnect"  -var="contact_flow_name=GI_Inbound_Main_ucsf"
+
+terraform apply -var="region=us-east-1" -var="instance_alias=giucsf" -var="instance_name=GIucsfConnect" -var="contact_flow_name=GI_Inbound_Main_ucsf"
+
+```
+
