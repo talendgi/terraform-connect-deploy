@@ -24,6 +24,18 @@ terraform-connect-deploy/
 | `.gitignore` | **Version control exclusion rules** to keep the repository clean and secure. | Ignores `.terraform/`, `*.tfstate*`, `.terraform.lock.hcl`, OS/IDE files | Prevents state file conflicts, avoids exposing local cache or credentials, and ensures every user starts with a fresh, consistent Terraform workspace. |
 | `flows/contact_flow.json` | **Source of truth for the contact flow routing logic**. | Raw JSON exported from an existing Amazon Connect instance | Contains the actual call routing, prompts, and branching logic. Terraform reads it as a static data source and injects it into the new instance without modification. |
 
+## 🤖 Lex Bot Setup (One-Time Manual Step)
+
+This Terraform configuration manages the Amazon Connect instance and contact flow. The Lex V2 bot must be created manually:
+
+1. Go to [Lex V2 Console](https://console.aws.amazon.com/lexv2/home?region=us-east-1)
+2. Create bot: `GIHealthcareBot_ucsf` with alias `TestBotAlias_ucsf`
+3. Import the bot definition from `lex/GIHealthcareBot.zip` (Actions → Import → Merge)
+4. Copy the **Alias ARN** and paste it into `flows/GI_Inbound_Main_ucsf.json` where you see `"AliasArn"`
+
+
+
+
 ## Deploy
 ```bash
 terraform init
@@ -45,3 +57,7 @@ terraform plan -var="region=us-east-1" -var="instance_alias=giucsf" -var="instan
 terraform apply -var="region=us-east-1" -var="instance_alias=giucsf" -var="instance_name=GIucsfConnect" -var="contact_flow_name=GI_Inbound_Main_ucsf"
 
 ```
+
+terraform plan -var="region=us-east-1" -var="instance_alias=giucsf" -var="instance_name=GIucsfConnect" -var="contact_flow_name=GI_Inbound_Main_ucsf" -var="lex_bot_name=GIHealthcareBot_ucsf" -var="lex_bot_alias_name=TestBotAlias_ucsf"
+
+terraform apply -var="region=us-east-1" -var="instance_alias=giucsf" -var="instance_name=GIucsfConnect" -var="contact_flow_name=GI_Inbound_Main_ucsf" -var="lex_bot_name=GIHealthcareBot_ucsf" -var="lex_bot_alias_name=TestBotAlias_ucsf"
