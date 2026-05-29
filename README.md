@@ -1,8 +1,9 @@
-# Amazon Connect + Contact Flow Terraform Deployment
+# Amazon AWS connect , Contact flow, DynamoDB, Lambda with Terraform Deployment
 
 ## Prerequisites
 - AWS CLI configured with credentials that have `connect:*` and `iam:CreateRole`/`iam:PassRole` permissions
 - Terraform >= 1.0 installed
+- clear steps in the document: https://docs.google.com/document/d/1uycmWpdwulOAIpBNnjIO3yZsO4OdQIdQ2VzM8Lw0rXI/edit?tab=t.0
 
 ## 📁 Project Structure & File Descriptions
 
@@ -14,15 +15,10 @@ terraform-connect-deploy/
 ├── .gitignore
 └── flows/
     └── contact_flow.json ← Extract your exported flow JSON here
-<<<<<<< HEAD
 └── lambda/
     └── GIHealthcareLexFulfillment_ucsf.zip ← Extract your exported lambda Function zip here
 └── lex/
     └── GIHealthcareBot_ucsf.zip ← Extract your exported lex zip here
-=======
-└── lex/
-    └── GIHealthcareBot_ucsf.zip ← Extract your exported lex bot zip here
->>>>>>> bd9ba2c477a42d79d555e03d2d980139470a10a3
 ```
 
 | File / Directory | Purpose | Key Contents | Why It Enables Safe Handover |
