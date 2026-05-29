@@ -83,7 +83,7 @@ main.tf
 ├── aws_iam_role.lambda_exec
 ├── aws_iam_role_policy_attachment.lambda_basic
 ├── aws_lambda_function.voicebot_handler
-├── aws_iam_role_policy.lambda_dynamodb_access  ← ADD HERE
+├── aws_iam_role_policy.lambda_dynamodb_access
 └── aws_dynamodb_table.conversation_turns
 ```
 
