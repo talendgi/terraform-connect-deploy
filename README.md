@@ -14,10 +14,15 @@ terraform-connect-deploy/
 ├── .gitignore
 └── flows/
     └── contact_flow.json ← Extract your exported flow JSON here
+<<<<<<< HEAD
 └── lambda/
     └── GIHealthcareLexFulfillment_ucsf.zip ← Extract your exported lambda Function zip here
 └── lex/
     └── GIHealthcareBot_ucsf.zip ← Extract your exported lex zip here
+=======
+└── lex/
+    └── GIHealthcareBot_ucsf.zip ← Extract your exported lex bot zip here
+>>>>>>> bd9ba2c477a42d79d555e03d2d980139470a10a3
 ```
 
 | File / Directory | Purpose | Key Contents | Why It Enables Safe Handover |
@@ -29,7 +34,7 @@ terraform-connect-deploy/
 | `flows/contact_flow.json` | **Source of truth for the contact flow routing logic**. | Raw JSON exported from an existing Amazon Connect instance | Contains the actual call routing, prompts, and branching logic. Terraform reads it as a static data source and injects it into the new instance without modification. |
 | `lambda/*.zip` | **Voicebot fulfillment code**. | Python/Node.js Lambda package with DynamoDB write logic + Lex fulfillment | Deployed automatically by Terraform → consistent versioning across environments. |
 
-## 🤖 Lex Bot Setup (One-Time Manual Step)
+## Lex Bot Setup (One-Time Manual Step)
 
 This Terraform configuration manages the Amazon Connect instance and contact flow. The Lex V2 bot must be created manually:
 
