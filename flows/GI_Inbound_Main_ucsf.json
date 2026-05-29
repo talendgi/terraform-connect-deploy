@@ -234,9 +234,9 @@
           "LexV2Bot": {
             "AliasArn": {
               "useLexBotDropdown": true,
-              "lexV2BotName": "GIHealthcareBot"
+              "lexV2BotName": "GIHealthcareBot_ucsf"
             },
-            "displayName": "GIHealthcareBot"
+            "displayName": "GIHealthcareBot_ucsf"
           }
         },
         "dynamicMetadata": {
@@ -300,9 +300,9 @@
           "LexV2Bot": {
             "AliasArn": {
               "useLexBotDropdown": true,
-              "lexV2BotName": "GIHealthcareBot"
+              "lexV2BotName": "GIHealthcareBot_ucsf"
             },
-            "displayName": "GIHealthcareBot"
+            "displayName": "GIHealthcareBot_ucsf"
           }
         },
         "dynamicMetadata": {
@@ -356,9 +356,9 @@
           "LexV2Bot": {
             "AliasArn": {
               "useLexBotDropdown": true,
-              "lexV2BotName": "GIHealthcareBot"
+              "lexV2BotName": "GIHealthcareBot_ucsf"
             },
-            "displayName": "GIHealthcareBot"
+            "displayName": "GIHealthcareBot_ucsf"
           }
         },
         "dynamicMetadata": {
@@ -500,7 +500,7 @@
             "AliasArn": {
               "displayName": "TestBotAlias",
               "useLexBotDropdown": true,
-              "lexV2BotName": "GIHealthcareBot"
+              "lexV2BotName": "GIHealthcareBot_ucsf"
             }
           },
           "LexSessionAttributes": {
@@ -1026,7 +1026,7 @@
       "Parameters": {
         "Text": "$.Attributes.namePrompt",
         "LexV2Bot": {
-          "AliasArn": "arn:aws:lex:us-east-1:642058032951:bot-alias/CSMSY7YKWE/TSTALIASID"
+          "AliasArn": "arn:aws:lex:us-east-1:642058032951:bot-alias/4XWU77TLEP/TSTALIASID"
         },
         "LexSessionAttributes": {
           "x-amz-lex:audio:start-timeout-ms:*:*": "10000",
@@ -1096,7 +1096,7 @@
       "Parameters": {
         "Text": "$.Attributes.datePrompt",
         "LexV2Bot": {
-          "AliasArn": "arn:aws:lex:us-east-1:642058032951:bot-alias/CSMSY7YKWE/TSTALIASID"
+          "AliasArn": "arn:aws:lex:us-east-1:642058032951:bot-alias/4XWU77TLEP/TSTALIASID"
         },
         "LexSessionAttributes": {
           "x-amz-lex:audio:start-timeout-ms:*:*": "12000",
@@ -1156,7 +1156,7 @@
       "Parameters": {
         "Text": "$.Attributes.timePrompt",
         "LexV2Bot": {
-          "AliasArn": "arn:aws:lex:us-east-1:642058032951:bot-alias/CSMSY7YKWE/TSTALIASID"
+          "AliasArn": "arn:aws:lex:us-east-1:642058032951:bot-alias/4XWU77TLEP/TSTALIASID"
         },
         "LexSessionAttributes": {
           "x-amz-lex:audio:start-timeout-ms:*:*": "10000",
@@ -1381,7 +1381,7 @@
       "Parameters": {
         "Text": "$.Attributes.goAheadMsg",
         "LexV2Bot": {
-          "AliasArn": "arn:aws:lex:us-east-1:642058032951:bot-alias/CSMSY7YKWE/TSTALIASID"
+          "AliasArn": "arn:aws:lex:us-east-1:642058032951:bot-alias/4XWU77TLEP/TSTALIASID"
         },
         "LexSessionAttributes": {
           "x-amz-lex:audio:start-timeout-ms:*:*": "15000",

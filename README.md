@@ -14,6 +14,10 @@ terraform-connect-deploy/
 ├── .gitignore
 └── flows/
     └── contact_flow.json ← Extract your exported flow JSON here
+└── lambda/
+    └── GIHealthcareLexFulfillment_ucsf.zip ← Extract your exported lambda Function zip here
+└── lex/
+    └── GIHealthcareBot_ucsf.zip ← Extract your exported lex zip here
 ```
 
 | File / Directory | Purpose | Key Contents | Why It Enables Safe Handover |
@@ -23,6 +27,7 @@ terraform-connect-deploy/
 | `outputs.tf` | **Post-deployment return values** printed after a successful `terraform apply`. | - Connect Instance ID & ARN<br>- Contact Flow ID & ARN | Provides immediate verification values. CI/CD pipelines or downstream scripts can parse these outputs without querying AWS manually. |
 | `.gitignore` | **Version control exclusion rules** to keep the repository clean and secure. | Ignores `.terraform/`, `*.tfstate*`, `.terraform.lock.hcl`, OS/IDE files | Prevents state file conflicts, avoids exposing local cache or credentials, and ensures every user starts with a fresh, consistent Terraform workspace. |
 | `flows/contact_flow.json` | **Source of truth for the contact flow routing logic**. | Raw JSON exported from an existing Amazon Connect instance | Contains the actual call routing, prompts, and branching logic. Terraform reads it as a static data source and injects it into the new instance without modification. |
+| `lambda/*.zip` | **Voicebot fulfillment code**. | Python/Node.js Lambda package with DynamoDB write logic + Lex fulfillment | Deployed automatically by Terraform → consistent versioning across environments. |
 
 ## 🤖 Lex Bot Setup (One-Time Manual Step)
 
@@ -36,7 +41,7 @@ This Terraform configuration manages the Amazon Connect instance and contact flo
 
 
 
-## Deploy
+## Deployment 
 ```bash
 terraform init
 terraform plan \
@@ -50,13 +55,37 @@ terraform apply \
   -var="instance_name=<display-name>" \
   -var="contact_flow_name=<flow-name-in-console>"
 ```
-## example code 
+### example code 
 ```bash
 terraform plan -var="region=us-east-1" -var="instance_alias=giucsf" -var="instance_name=GIucsfConnect"  -var="contact_flow_name=GI_Inbound_Main_ucsf"
 
 terraform apply -var="region=us-east-1" -var="instance_alias=giucsf" -var="instance_name=GIucsfConnect" -var="contact_flow_name=GI_Inbound_Main_ucsf"
 
 ```
+
+### using terraform.tfvars
+ create a terraform.tfvars file in the root folder , terraform auto-loads .tfvars
+ Code example 
+ ``` bash
+ terraform init
+ terraform plan
+ terraform apply
+ ```
+
+### main.tf File Structure
+``` bash 
+main.tf
+├── terraform block
+├── provider block
+├── aws_connect_instance.this
+├── aws_connect_contact_flow.main_flow
+├── aws_iam_role.lambda_exec
+├── aws_iam_role_policy_attachment.lambda_basic
+├── aws_lambda_function.voicebot_handler
+├── aws_iam_role_policy.lambda_dynamodb_access  ← ADD HERE
+└── aws_dynamodb_table.conversation_turns
+```
+
 
 terraform plan -var="region=us-east-1" -var="instance_alias=giucsf" -var="instance_name=GIucsfConnect" -var="contact_flow_name=GI_Inbound_Main_ucsf" -var="lex_bot_name=GIHealthcareBot_ucsf" -var="lex_bot_alias_name=TestBotAlias_ucsf"
 

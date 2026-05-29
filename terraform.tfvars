@@ -1,0 +1,8 @@
+region                = "us-east-1"
+instance_alias        = "giucsf"
+instance_name         = "GIucsfConnect"
+contact_flow_name     = "GI_Inbound_Main_ucsf"
+lambda_function_name  = "GIHealthcareLexFulfillment_ucsf"
+lambda_runtime        = "python3.11"
+lambda_zip_path       = "./lambda/GIHealthcareLexFulfillment_ucsf.zip"
+dynamodb_table_name   = "GIPatients_ucsf"
